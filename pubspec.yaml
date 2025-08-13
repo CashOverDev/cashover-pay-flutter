@@ -1,7 +1,13 @@
 name: cashover_pay_flutter
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: >
+  Official Flutter SDK for integrating CashOver Pay into your mobile apps. 
+  Accept secure digital payments online and manage payment workflows with ease.
+  Built to be fast, reliable, and developer-friendly.
+version: 0.1.0
+homepage: https://github.com/cashover/cashover-pay-flutter
+repository: https://github.com/cashover/cashover-pay-flutter
+issue_tracker: https://github.com/cashover/cashover-pay-flutter/issues
+documentation: https://docs.cashover.money/guides/merchant/client-setup/flutter
 
 environment:
   sdk: ^3.7.2
@@ -10,6 +16,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:

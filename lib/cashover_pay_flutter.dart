@@ -1,5 +1,3 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+library cashover_pay_flutter;
+
+export 'src/widgets/cashover_pay_button.dart';
