@@ -50,7 +50,11 @@ class CashOverPayButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset('assets/cashover_logo.png', height: 24),
+          Image.asset(
+            'assets/cashover_logo.png',
+            height: 36,
+            package: 'cashover_pay_flutter',
+          ),
           const SizedBox(width: 8),
           Text(
             CashOverLocalization.translate(
@@ -59,7 +63,7 @@ class CashOverPayButton extends StatelessWidget {
             ),
             style: TextStyle(
               color: textColor ?? CashOverConstants.defaultTextColor,
-              fontSize: 16,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),

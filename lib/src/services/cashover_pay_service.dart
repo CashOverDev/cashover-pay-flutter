@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:url_launcher/url_launcher.dart';
 
 /// A singleton service class to handle CashOver payment operations.
@@ -38,12 +40,12 @@ class CashOverService {
     );
 
     final uri = Uri.parse(url);
-
-    // Attempt to launch the URL in an external browser
-    if (await canLaunchUrl(uri)) {
+    print('opening $uri');
+    // Do not check the canLaunchUrl function as it sometimes gives false results disallowing launching urls.
+    try {
       await launchUrl(uri);
-    } else {
-      throw 'Could not launch $url';
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -59,15 +61,19 @@ class CashOverService {
     required double amount,
     required String currency,
     Map<String, dynamic>? metadata,
+    List<String>? webhookIds,
   }) {
     // Ensure metadata map exists and include storeUserName
     metadata ??= {};
     metadata['storeUserName'] = storeUsername;
 
-    // Encode metadata for safe inclusion in URL
-    final meta = Uri.encodeComponent(metadata.toString());
-
     // Return the complete payment URL
-    return 'https://cashover.com/pay?userName=$merchantUsername&amount=$amount&currency=$currency&metadata=$meta';
+    // Encode metadata as JSON and then URI component
+    final encodedMetadata = Uri.encodeComponent(jsonEncode(metadata));
+
+    final url =
+        'https://staging.cashover.money/pay?userName=$merchantUsername&amount=$amount&currency=$currency'
+        '${webhookIds != null ? '&webhookIds=${webhookIds.join(",")}' : ''}';
+    return url;
   }
 }
