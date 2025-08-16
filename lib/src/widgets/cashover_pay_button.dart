@@ -35,7 +35,7 @@ class CashOverPayButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final cashOverPayService = CashOverService.instance;
+    final cashOverPayService = CashOverPayService.instance;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor:

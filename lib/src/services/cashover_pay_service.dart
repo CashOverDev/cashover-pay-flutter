@@ -7,12 +7,12 @@ import 'package:url_launcher/url_launcher.dart';
 ///
 /// This service provides a centralized way to launch payment URLs for the CashOver
 /// platform.
-class CashOverService {
-  /// Singleton instance of [CashOverService].
-  static final CashOverService instance = CashOverService._internal();
+class CashOverPayService {
+  /// Singleton instance of [CashOverPayService].
+  static final CashOverPayService instance = CashOverPayService._internal();
 
   /// Private constructor for singleton pattern.
-  CashOverService._internal();
+  CashOverPayService._internal();
 
   /// Initiates a payment by launching the CashOver payment URL in the user's browser.
   ///
