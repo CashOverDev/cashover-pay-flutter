@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -40,12 +41,11 @@ class CashOverService {
     );
 
     final uri = Uri.parse(url);
-    print('opening $uri');
     // Do not check the canLaunchUrl function as it sometimes gives false results disallowing launching urls.
     try {
-      await launchUrl(uri);
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (e) {
-      print(e);
+      log("Unable to launch url", error: e);
     }
   }
 
@@ -73,7 +73,8 @@ class CashOverService {
 
     final url =
         'https://staging.cashover.money/pay?userName=$merchantUsername&amount=$amount&currency=$currency'
-        '${webhookIds != null ? '&webhookIds=${webhookIds.join(",")}' : ''}';
+        '${webhookIds != null ? '&webhookIds=${webhookIds.join(",")}' : ''}'
+        '&metadata=$encodedMetadata';
     return url;
   }
 }

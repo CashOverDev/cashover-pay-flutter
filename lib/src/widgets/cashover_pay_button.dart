@@ -13,7 +13,10 @@ class CashOverPayButton extends StatelessWidget {
   final Color? buttonColor;
   final Color? textColor;
   final double? borderRadius;
+  final MainAxisSize? mainAxisSize;
+  final MainAxisAlignment? mainAxisAlignment;
   final String? language;
+  final double? fontSize;
 
   const CashOverPayButton({
     super.key,
@@ -25,7 +28,10 @@ class CashOverPayButton extends StatelessWidget {
     this.buttonColor,
     this.textColor,
     this.borderRadius,
+    this.mainAxisSize,
+    this.mainAxisAlignment,
     this.language,
+    this.fontSize,
   });
   @override
   Widget build(BuildContext context) {
@@ -48,22 +54,41 @@ class CashOverPayButton extends StatelessWidget {
         );
       },
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: mainAxisSize ?? MainAxisSize.min,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceAround,
         children: [
-          Image.asset(
-            'assets/cashover_logo.png',
-            height: 36,
-            package: 'cashover_pay_flutter',
-          ),
-          const SizedBox(width: 8),
-          Text(
-            CashOverLocalization.translate(
-              'pay_with_cashover',
-              language: language,
+          Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: Text(
+              CashOverLocalization.translate('buy_with', language: language),
+              style: TextStyle(
+                color: textColor ?? CashOverConstants.defaultTextColor,
+                fontSize: fontSize ?? CashOverConstants.defaultFontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+          ),
+          Text(
+            "CASH",
             style: TextStyle(
               color: textColor ?? CashOverConstants.defaultTextColor,
-              fontSize: 24,
+              fontSize: fontSize ?? CashOverConstants.defaultFontSize,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 2, right: 2),
+            child: Image.asset(
+              'assets/cashover_logo.png',
+              height: (fontSize ?? CashOverConstants.defaultFontSize),
+              package: 'cashover_pay_flutter',
+            ),
+          ),
+          Text(
+            "VER",
+            style: TextStyle(
+              color: textColor ?? CashOverConstants.defaultTextColor,
+              fontSize: fontSize ?? CashOverConstants.defaultFontSize,
               fontWeight: FontWeight.bold,
             ),
           ),

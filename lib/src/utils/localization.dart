@@ -5,7 +5,6 @@ import 'lang.dart';
 class CashOverLocalization {
   static final Map<String, Map<String, String>> _languages = {
     "en": en,
-    "es": es,
     "fr": fr,
     // add other languages here
   };
