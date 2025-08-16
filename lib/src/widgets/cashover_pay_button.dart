@@ -57,17 +57,6 @@ class CashOverPayButton extends StatelessWidget {
         mainAxisSize: mainAxisSize ?? MainAxisSize.min,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceAround,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 4.0),
-            child: Text(
-              CashOverLocalization.translate('buy_with', language: language),
-              style: TextStyle(
-                color: textColor ?? CashOverConstants.defaultTextColor,
-                fontSize: fontSize ?? CashOverConstants.defaultFontSize,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
           Text(
             "CASH",
             style: TextStyle(
@@ -90,6 +79,17 @@ class CashOverPayButton extends StatelessWidget {
               color: textColor ?? CashOverConstants.defaultTextColor,
               fontSize: fontSize ?? CashOverConstants.defaultFontSize,
               fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Text(
+              CashOverLocalization.translate('pay'),
+              style: TextStyle(
+                color: textColor ?? CashOverConstants.defaultTextColor,
+                fontSize: fontSize ?? CashOverConstants.defaultFontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
