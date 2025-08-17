@@ -9,6 +9,7 @@ class CashOverPayButton extends StatelessWidget {
   final double amount;
   final String currency;
   final Map<String, dynamic>? metadata;
+  final List<String>? webhookIds;
 
   final Color? buttonColor;
   final Color? textColor;
@@ -25,6 +26,7 @@ class CashOverPayButton extends StatelessWidget {
     required this.amount,
     required this.currency,
     this.metadata,
+    this.webhookIds,
     this.buttonColor,
     this.textColor,
     this.borderRadius,
@@ -50,7 +52,9 @@ class CashOverPayButton extends StatelessWidget {
           merchantUsername: merchantUsername,
           storeUsername: storeUsername,
           amount: amount,
+          metadata: metadata,
           currency: currency,
+          webhookIds: webhookIds,
         );
       },
       child: Row(
