@@ -66,29 +66,25 @@ class CashOverPayService {
   }) {
     // Ensure metadata map exists and include storeUserName
     metadata ??= {};
+    // append the storeUserName to the metadata (api required)
     metadata['storeUserName'] = storeUsername;
-    final queryParams = <String, String>{
-      'userName': merchantUsername,
-      'amount': amount.toStringAsFixed(2).replaceAll('.00', ''),
-      if (webhookIds?.isNotEmpty ?? false) 'webhookIds': webhookIds!.join(','),
-      'metadata': Uri.encodeComponent(jsonEncode(metadata)),
-    };
 
-    // Create query string only (no scheme/host/path)
-    final queryString = Uri(queryParameters: queryParams).query;
-
+    final encodedMetadata = jsonEncode(metadata);
+    var queryParams =
+        "userName=$merchantUsername&amount=$amount&currency=$currency&metadata=$encodedMetadata";
+    if (webhookIds != null) {
+      queryParams = "$queryParams&webhookIds=${jsonEncode(webhookIds)}";
+    }
     // Compress with gzip
-    final compressed = GZipEncoder().encode(utf8.encode(queryString));
-
-    // Encode with URL-safe Base64, no padding
-    final encoded = base64Url.encode(compressed).replaceAll('=', '');
+    final compressed = GZipEncoder().encode(utf8.encode(queryParams));
+    // base64 encode
+    final encoded = base64.encode(compressed);
     final uri = Uri(
       scheme: 'https',
       host: 'staging.cashover.money',
       path: 'pay',
       queryParameters: {'session': encoded},
     );
-
     return uri;
   }
 }

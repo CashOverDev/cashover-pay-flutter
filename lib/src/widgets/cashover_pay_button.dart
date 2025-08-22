@@ -11,13 +11,12 @@ class CashOverPayButton extends StatelessWidget {
   final Map<String, dynamic>? metadata;
   final List<String>? webhookIds;
 
-  final Color? buttonColor;
-  final Color? textColor;
   final double? borderRadius;
   final MainAxisSize? mainAxisSize;
   final MainAxisAlignment? mainAxisAlignment;
   final String? language;
   final double? fontSize;
+  final ThemeMode? theme;
 
   const CashOverPayButton({
     super.key,
@@ -27,21 +26,32 @@ class CashOverPayButton extends StatelessWidget {
     required this.currency,
     this.metadata,
     this.webhookIds,
-    this.buttonColor,
-    this.textColor,
     this.borderRadius,
     this.mainAxisSize,
     this.mainAxisAlignment,
     this.language,
     this.fontSize,
+    this.theme = ThemeMode.system,
   });
   @override
   Widget build(BuildContext context) {
+    final systemTheme = Theme.of(context);
+    final isDark =
+        theme == ThemeMode.system
+            ? systemTheme.brightness == Brightness.dark
+            : (theme == ThemeMode.light ? false : true);
+    final textColor =
+        isDark
+            ? CashOverConstants.defaultDarkTextColor
+            : CashOverConstants.defaultLightTextColor;
+    final buttonColor =
+        isDark
+            ? CashOverConstants.defaultDarkButtonBackgroundColor
+            : CashOverConstants.defaultLightButtonBackgroundColor;
     final cashOverPayService = CashOverPayService.instance;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            buttonColor ?? CashOverConstants.defaultButtonBackgroundColor,
+        backgroundColor: buttonColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 8),
         ),
@@ -64,7 +74,7 @@ class CashOverPayButton extends StatelessWidget {
           Text(
             "CASH",
             style: TextStyle(
-              color: textColor ?? CashOverConstants.defaultTextColor,
+              color: textColor,
               fontSize: fontSize ?? CashOverConstants.defaultFontSize,
               fontWeight: FontWeight.bold,
             ),
@@ -80,7 +90,7 @@ class CashOverPayButton extends StatelessWidget {
           Text(
             "VER",
             style: TextStyle(
-              color: textColor ?? CashOverConstants.defaultTextColor,
+              color: textColor,
               fontSize: fontSize ?? CashOverConstants.defaultFontSize,
               fontWeight: FontWeight.bold,
             ),
@@ -90,7 +100,7 @@ class CashOverPayButton extends StatelessWidget {
             child: Text(
               CashOverLocalization.translate('pay'),
               style: TextStyle(
-                color: textColor ?? CashOverConstants.defaultTextColor,
+                color: textColor,
                 fontSize: fontSize ?? CashOverConstants.defaultFontSize,
                 fontWeight: FontWeight.bold,
               ),
