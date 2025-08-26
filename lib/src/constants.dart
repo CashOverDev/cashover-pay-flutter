@@ -6,4 +6,5 @@ class CashOverConstants {
   static const Color defaultDarkButtonBackgroundColor = Colors.white;
   static const Color defaultDarkTextColor = Colors.black;
   static const double defaultFontSize = 20;
+  static const String host = 'cashover.money';
 }

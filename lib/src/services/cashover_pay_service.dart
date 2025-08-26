@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cashover_pay_flutter/src/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:archive/archive.dart';
 
@@ -21,8 +22,9 @@ class CashOverPayService {
   /// - [merchantUsername]: The username of the merchant.
   /// - [storeUsername]: The username of the store.
   /// - [amount]: Payment amount.
-  /// - [currency]: Currency code (e.g., USD, EUR).
+  /// - [currency]: Currency code (e.g., USD, LBP).
   /// - [metadata]: Optional additional data to attach to the payment.
+  /// - [webhookIds]: Optional webhook Ids to trigger events.
   ///
   /// Throws an exception if the payment URL cannot be launched.
   Future<void> pay({
@@ -81,7 +83,7 @@ class CashOverPayService {
     final encoded = base64.encode(compressed);
     final uri = Uri(
       scheme: 'https',
-      host: 'staging.cashover.money',
+      host: CashOverConstants.host,
       path: 'pay',
       queryParameters: {'session': encoded},
     );
