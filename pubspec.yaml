@@ -4,9 +4,10 @@ description: >
   Accept secure digital payments online and manage payment workflows with ease.
   Built to be fast, reliable, and developer-friendly.
 version: 0.1.0
-homepage: https://github.com/cashover/cashover-pay-flutter
-repository: https://github.com/cashover/cashover-pay-flutter
-issue_tracker: https://github.com/cashover/cashover-pay-flutter/issues
+License: MIT
+homepage: https://github.com/CashOverDev/cashover-pay-flutter
+repository: https://github.com/CashOverDev/cashover-pay-flutter
+issue_tracker: https://github.com/CashOverDev/cashover-pay-flutter
 documentation: https://docs.cashover.money/guides/merchant/client-setup/flutter
 
 environment:
