@@ -3,7 +3,7 @@ description: >
   Official Flutter SDK for integrating CashOver Pay into your mobile apps. 
   Accept secure digital payments online and manage payment workflows with ease.
   Built to be fast, reliable, and developer-friendly.
-version: 0.1.0
+version: 0.1.1
 License: MIT
 homepage: https://github.com/CashOverDev/cashover-pay-flutter
 repository: https://github.com/CashOverDev/cashover-pay-flutter
