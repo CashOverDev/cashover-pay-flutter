@@ -158,7 +158,7 @@ We welcome contributions! Please see our contributing guidelines in the reposito
 
 ### Currency Precision
 
-Make sure to follow the correct precision for each currency. Refer to our [currency settings documentation](../currency-settings#supported-currencies--precision) for details.
+Make sure to follow the correct precision for each currency. Refer to our [currency settings documentation](https://docs.cashover.money/guides/merchant/currency-settings) for details.
 
 ### Security
 
